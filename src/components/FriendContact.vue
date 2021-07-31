@@ -39,6 +39,17 @@ export default {
     }
 
   },
+  // emits: ['toggle-favorite'],
+  emits: {
+    'toggle-favorite': function(id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn('Id is missing !');
+        return false;
+      }
+    }
+  },
   data() {
     return {
       detailsAreVisible: false,            
@@ -49,8 +60,8 @@ export default {
           this.detailsAreVisible = !this.detailsAreVisible;
       },
       toggleFavorite() {
-        // Selalu kabap case
-        this.$emit('toggle-favorite', this.id);
+        // Selalu kabap case        
+        this.$emit('toggle-favorite'); // Id dihilangkan agar uncul error warning dari emits
           // this.friendIsFavorite = !this.friendIsFavorite;
       }
 
